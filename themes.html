@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Color Theme Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #e2e8f0; line-height: 1.6; }
+
+    .page-title {
+      text-align: center;
+      padding: 48px 24px 16px;
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .page-sub {
+      text-align: center;
+      color: #94a3b8;
+      margin-bottom: 48px;
+      font-size: 1rem;
+    }
+
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 32px;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 32px 64px;
+    }
+
+    .theme-card {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .theme-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+
+    .theme-header {
+      padding: 32px 28px 24px;
+      text-align: center;
+    }
+    .theme-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .theme-tagline {
+      font-size: 0.82rem;
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
+    .theme-metric {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .theme-metric-label { font-size: 0.75rem; font-weight: 600; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .theme-body { padding: 20px 28px 28px; }
+    .theme-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .theme-tag {
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+    .theme-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .theme-label-pill {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* ============ THEME 1: CURRENT — Ocean Blue / Teal ============ */
+    .t1 .theme-header { background: linear-gradient(135deg, #0a0e1a 0%, #0f4c81 100%); }
+    .t1 .theme-name { color: #00c4cc; }
+    .t1 .theme-metric { background: linear-gradient(135deg, #0f4c81, #00c4cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .t1 .theme-body { background: #111827; }
+    .t1 .theme-tag { background: rgba(15,76,129,0.2); border: 1px solid rgba(0,196,204,0.3); color: #93c5fd; }
+    .t1 .theme-btn { background: linear-gradient(135deg, #0f4c81, #00c4cc); color: #fff; }
+    .t1 .theme-label-pill { background: rgba(0,196,204,0.15); color: #00c4cc; border: 1px solid rgba(0,196,204,0.3); }
+    .t1 { border-color: rgba(0,196,204,0.25); }
+
+    /* ============ THEME 2: SLATE PROFESSIONAL — Charcoal / Silver / White ============ */
+    .t2 .theme-header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+    .t2 .theme-name { color: #e2e8f0; font-family: 'Playfair Display', serif; }
+    .t2 .theme-metric { background: linear-gradient(135deg, #94a3b8, #f1f5f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .t2 .theme-body { background: #1e293b; }
+    .t2 .theme-tag { background: rgba(148,163,184,0.1); border: 1px solid rgba(148,163,184,0.2); color: #cbd5e1; }
+    .t2 .theme-btn { background: #e2e8f0; color: #0f172a; }
+    .t2 .theme-label-pill { background: rgba(148,163,184,0.12); color: #94a3b8; border: 1px solid rgba(148,163,184,0.25); }
+    .t2 { border-color: rgba(148,163,184,0.2); }
+
+    /* ============ THEME 3: GOLD & DARK — Deep Black / Amber / White ============ */
+    .t3 .theme-header { background: linear-gradient(135deg, #0a0800 0%, #1a1200 50%, #0a0800 100%); }
+    .t3 .theme-name { color: #f59e0b; font-family: 'Playfair Display', serif; }
+    .t3 .theme-metric { background: linear-gradient(135deg, #f59e0b, #fcd34d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .t3 .theme-body { background: #130f00; }
+    .t3 .theme-tag { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); color: #fcd34d; }
+    .t3 .theme-btn { background: linear-gradient(135deg, #f59e0b, #fcd34d); color: #0a0800; }
+    .t3 .theme-label-pill { background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+    .t3 { border-color: rgba(245,158,11,0.2); }
+
+    /* ============ THEME 4: FOREST EXECUTIVE — Deep Green / Sage / Cream ============ */
+    .t4 .theme-header { background: linear-gradient(135deg, #051a10 0%, #0d3320 100%); }
+    .t4 .theme-name { color: #34d399; font-family: 'Playfair Display', serif; }
+    .t4 .theme-metric { background: linear-gradient(135deg, #34d399, #a7f3d0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .t4 .theme-body { background: #051a10; }
+    .t4 .theme-tag { background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.2); color: #6ee7b7; }
+    .t4 .theme-btn { background: linear-gradient(135deg, #059669, #34d399); color: #fff; }
+    .t4 .theme-label-pill { background: rgba(52,211,153,0.1); color: #34d399; border: 1px solid rgba(52,211,153,0.25); }
+    .t4 { border-color: rgba(52,211,153,0.2); }
+
+    /* ============ THEME 5: CRIMSON EXECUTIVE — Near-Black / Crimson / White ============ */
+    .t5 .theme-header { background: linear-gradient(135deg, #0d0005 0%, #1a0008 100%); }
+    .t5 .theme-name { color: #f87171; font-family: 'Playfair Display', serif; }
+    .t5 .theme-metric { background: linear-gradient(135deg, #dc2626, #f87171); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .t5 .theme-body { background: #0d0005; }
+    .t5 .theme-tag { background: rgba(220,38,38,0.08); border: 1px solid rgba(220,38,38,0.2); color: #fca5a5; }
+    .t5 .theme-btn { background: linear-gradient(135deg, #dc2626, #f87171); color: #fff; }
+    .t5 .theme-label-pill { background: rgba(220,38,38,0.1); color: #f87171; border: 1px solid rgba(220,38,38,0.25); }
+    .t5 { border-color: rgba(220,38,38,0.2); }
+
+    /* ============ THEME 6: MIDNIGHT VIOLET — Deep Purple / Lavender ============ */
+    .t6 .theme-header { background: linear-gradient(135deg, #0d0919 0%, #1e0a3c 100%); }
+    .t6 .theme-name { color: #a78bfa; font-family: 'Playfair Display', serif; }
+    .t6 .theme-metric { background: linear-gradient(135deg, #7c3aed, #c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .t6 .theme-body { background: #0d0919; }
+    .t6 .theme-tag { background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25); color: #c4b5fd; }
+    .t6 .theme-btn { background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; }
+    .t6 .theme-label-pill { background: rgba(124,58,237,0.12); color: #a78bfa; border: 1px solid rgba(124,58,237,0.3); }
+    .t6 { border-color: rgba(124,58,237,0.2); }
+
+    .current-label {
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #00c4cc;
+      margin-bottom: 8px;
+    }
+
+    .divider { width: 40px; height: 3px; border-radius: 2px; margin: 12px auto; }
+    .t1 .divider { background: linear-gradient(90deg, #0f4c81, #00c4cc); }
+    .t2 .divider { background: linear-gradient(90deg, #64748b, #e2e8f0); }
+    .t3 .divider { background: linear-gradient(90deg, #f59e0b, #fcd34d); }
+    .t4 .divider { background: linear-gradient(90deg, #059669, #34d399); }
+    .t5 .divider { background: linear-gradient(90deg, #dc2626, #f87171); }
+    .t6 .divider { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+  </style>
+</head>
+<body>
+
+<h1 class="page-title">Color Theme Preview</h1>
+<p class="page-sub">Compare all options before choosing. Click on a theme card to see it more clearly.<br/>Reply with the theme number or name and your portfolio will be updated.</p>
+
+<div class="themes-grid">
+
+  <!-- THEME 1: CURRENT -->
+  <div class="theme-card t1">
+    <div class="theme-header">
+      <div class="current-label">Currently Active</div>
+      <div class="theme-label-pill">Theme 1</div>
+      <div class="divider"></div>
+      <div class="theme-name">Ocean Blue &amp; Teal</div>
+      <div class="theme-tagline">Cool, tech-forward, clinical precision</div>
+      <div class="theme-metric">44+</div>
+      <div class="theme-metric-label">Countries Served</div>
+    </div>
+    <div class="theme-body">
+      <div class="theme-tags">
+        <span class="theme-tag">Supply Chain Strategy</span>
+        <span class="theme-tag">Python Automation</span>
+        <span class="theme-tag">Power BI</span>
+      </div>
+      <div class="theme-btn">View Experience &rarr;</div>
+    </div>
+  </div>
+
+  <!-- THEME 2: SLATE PROFESSIONAL -->
+  <div class="theme-card t2">
+    <div class="theme-header">
+      <div class="theme-label-pill" style="background:rgba(148,163,184,0.12);color:#94a3b8;border:1px solid rgba(148,163,184,0.25);">Theme 2</div>
+      <div class="divider"></div>
+      <div class="theme-name">Slate Professional</div>
+      <div class="theme-tagline">Clean, sophisticated, executive-level elegance</div>
+      <div class="theme-metric">$17M</div>
+      <div class="theme-metric-label">Budget Managed</div>
+    </div>
+    <div class="theme-body">
+      <div class="theme-tags">
+        <span class="theme-tag">Supply Chain Strategy</span>
+        <span class="theme-tag">Python Automation</span>
+        <span class="theme-tag">Power BI</span>
+      </div>
+      <div class="theme-btn">View Experience &rarr;</div>
+    </div>
+  </div>
+
+  <!-- THEME 3: GOLD & DARK -->
+  <div class="theme-card t3">
+    <div class="theme-header">
+      <div class="theme-label-pill">Theme 3</div>
+      <div class="divider"></div>
+      <div class="theme-name">Gold Executive</div>
+      <div class="theme-tagline">Premium, bold, luxury consulting feel</div>
+      <div class="theme-metric">90%</div>
+      <div class="theme-metric-label">Planning Cycle Reduction</div>
+    </div>
+    <div class="theme-body">
+      <div class="theme-tags">
+        <span class="theme-tag">Supply Chain Strategy</span>
+        <span class="theme-tag">Python Automation</span>
+        <span class="theme-tag">Power BI</span>
+      </div>
+      <div class="theme-btn">View Experience &rarr;</div>
+    </div>
+  </div>
+
+  <!-- THEME 4: FOREST EXECUTIVE -->
+  <div class="theme-card t4">
+    <div class="theme-header">
+      <div class="theme-label-pill">Theme 4</div>
+      <div class="divider"></div>
+      <div class="theme-name">Forest Executive</div>
+      <div class="theme-tagline">Deep, calm, analytical authority</div>
+      <div class="theme-metric">95%</div>
+      <div class="theme-metric-label">Manual Review Eliminated</div>
+    </div>
+    <div class="theme-body">
+      <div class="theme-tags">
+        <span class="theme-tag">Supply Chain Strategy</span>
+        <span class="theme-tag">Python Automation</span>
+        <span class="theme-tag">Power BI</span>
+      </div>
+      <div class="theme-btn">View Experience &rarr;</div>
+    </div>
+  </div>
+
+  <!-- THEME 5: CRIMSON EXECUTIVE -->
+  <div class="theme-card t5">
+    <div class="theme-header">
+      <div class="theme-label-pill">Theme 5</div>
+      <div class="divider"></div>
+      <div class="theme-name">Crimson Executive</div>
+      <div class="theme-tagline">Bold, decisive, high-impact leadership</div>
+      <div class="theme-metric">60%</div>
+      <div class="theme-metric-label">Productivity Improvement</div>
+    </div>
+    <div class="theme-body">
+      <div class="theme-tags">
+        <span class="theme-tag">Supply Chain Strategy</span>
+        <span class="theme-tag">Python Automation</span>
+        <span class="theme-tag">Power BI</span>
+      </div>
+      <div class="theme-btn">View Experience &rarr;</div>
+    </div>
+  </div>
+
+  <!-- THEME 6: MIDNIGHT VIOLET -->
+  <div class="theme-card t6">
+    <div class="theme-header">
+      <div class="theme-label-pill">Theme 6</div>
+      <div class="divider"></div>
+      <div class="theme-name">Midnight Violet</div>
+      <div class="theme-tagline">Sophisticated, analytical, tech-innovation feel</div>
+      <div class="theme-metric">50%</div>
+      <div class="theme-metric-label">Workforce Time Saved</div>
+    </div>
+    <div class="theme-body">
+      <div class="theme-tags">
+        <span class="theme-tag">Supply Chain Strategy</span>
+        <span class="theme-tag">Python Automation</span>
+        <span class="theme-tag">Power BI</span>
+      </div>
+      <div class="theme-btn">View Experience &rarr;</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

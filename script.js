@@ -224,36 +224,19 @@ staggerFadeIn('.proj-card', 100);
 staggerFadeIn('.edu-card', 120);
 staggerFadeIn('.pillar-card', 100);
 
-// ===================== STORIES FILTER & EXPAND =====================
-document.addEventListener('DOMContentLoaded', function () {
-  // Filter buttons
-  const filterBtns = document.querySelectorAll('.story-filter-btn');
-  const storyCards = document.querySelectorAll('.story-card');
-
-  filterBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      var filter = btn.getAttribute('data-filter');
-      storyCards.forEach(function(card) {
-        if (filter === 'all' || card.getAttribute('data-value') === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    });
-  });
-
-  // Expand/collapse story bodies
-  document.querySelectorAll('.story-expand-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var card = btn.closest('.story-card');
-      var body = card.querySelector('.story-body');
-      var isOpen = body.classList.contains('expanded');
-      body.classList.toggle('expanded', !isOpen);
-      btn.classList.toggle('open', !isOpen);
-      btn.childNodes[0].textContent = isOpen ? 'Read full story ' : 'Close story ';
-    });
-  });
-});
+// ===================== STORIES EXPAND / COLLAPSE =====================
+function toggleStory(btn) {
+  var card = btn.closest('.story-card');
+  var body = card.querySelector('.story-body');
+  var summary = card.querySelector('.story-summary');
+  var isOpen = body.classList.contains('expanded');
+  body.classList.toggle('expanded', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  var textNode = btn.childNodes[0];
+  if (textNode && textNode.nodeType === 3) {
+    textNode.textContent = isOpen ? 'Read full story ' : 'Close story ';
+  }
+  if (summary) {
+    summary.style.display = isOpen ? '' : 'none';
+  }
+}

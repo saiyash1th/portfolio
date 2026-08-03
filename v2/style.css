@@ -375,9 +375,11 @@ section { position: relative; }
 }
 .metric-card:hover::before { opacity: 1; }
 .metric-number {
-  font-family: var(--font-display);
-  font-size: 2.4rem;
-  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
   background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -498,7 +500,7 @@ section { position: relative; }
 .skills-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 32px;
 }
 .skill-category { margin-bottom: 8px; }
 .skill-cat-title {
@@ -537,28 +539,30 @@ section { position: relative; }
   color: var(--accent2);
 }
 .stag-tertiary:hover { background: rgba(6,214,160,0.15); }
-.skill-bars { display: flex; flex-direction: column; gap: 14px; }
-.skill-bar-item {}
-.skill-bar-label {
+.skill-bars { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill-tool-tag {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15,76,129,0.15);
+  border: 1px solid rgba(0,196,204,0.2);
+  border-radius: 10px;
+  padding: 8px 16px;
   font-size: 0.85rem;
-  color: var(--text);
-  margin-bottom: 6px;
   font-weight: 500;
+  color: var(--text);
+  transition: all 0.25s ease;
+  cursor: default;
 }
-.skill-bar-track {
-  background: rgba(255,255,255,0.06);
-  border-radius: 100px;
-  height: 7px;
-  overflow: hidden;
+.skill-tool-tag:hover {
+  background: rgba(0,196,204,0.12);
+  border-color: rgba(0,196,204,0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,196,204,0.15);
 }
-.skill-bar-fill {
-  height: 100%;
-  border-radius: 100px;
-  background: var(--gradient);
-  width: 0;
-  transition: width 1.5s ease;
+.skill-tool-icon {
+  font-size: 1rem;
+  line-height: 1;
 }
 
 /* ===================== PROJECTS ===================== */
