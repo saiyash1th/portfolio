@@ -866,8 +866,3 @@ footer {
   .hero-photo { width: 120px; height: 120px; }
 }
 
-/* ===================== SPEAKING SECTION ALIGNMENT FIX ===================== */
-#speaking .section-label,
-#speaking .section-title {
-  text-align: center;
-}
