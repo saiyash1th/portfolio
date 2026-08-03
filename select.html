@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yashvanth Reddy - Portfolio Versions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',sans-serif;background:#0a0e1a;color:#e2e8f0;min-height:100vh;display:flex;align-items:center;justify-content:center;}
+    .container{max-width:900px;width:100%;padding:48px 24px;text-align:center;}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;background:linear-gradient(135deg,#fff 0%,#a5f3fc 50%,#06d6a0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+    .sub{color:#94a3b8;font-size:1rem;margin-bottom:56px;}
+    .cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:40px 32px;text-decoration:none;color:inherit;transition:all 0.3s;display:block;}
+    .card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(0,196,204,0.15);border-color:rgba(0,196,204,0.3);}
+    .card-badge{display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:20px;}
+    .badge-v1{background:rgba(15,76,129,0.3);border:1px solid rgba(15,76,129,0.5);color:#93c5fd;}
+    .badge-v2{background:rgba(6,214,160,0.12);border:1px solid rgba(6,214,160,0.3);color:#06d6a0;}
+    .card-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:10px;}
+    .card-desc{font-size:0.9rem;color:#94a3b8;line-height:1.6;margin-bottom:24px;}
+    .card-features{list-style:none;text-align:left;margin-bottom:28px;}
+    .card-features li{font-size:0.82rem;color:#94a3b8;padding:4px 0;display:flex;align-items:center;gap:8px;}
+    .card-features li::before{content:'';width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,#0f4c81,#00c4cc);flex-shrink:0;}
+    .card-btn{display:inline-block;padding:12px 28px;border-radius:100px;font-weight:700;font-size:0.9rem;transition:all 0.3s;}
+    .btn-v1{background:linear-gradient(135deg,#0f4c81,#00c4cc);color:#fff;box-shadow:0 4px 20px rgba(0,196,204,0.3);}
+    .btn-v2{background:linear-gradient(135deg,#06d6a0,#0f4c81);color:#fff;box-shadow:0 4px 20px rgba(6,214,160,0.3);}
+    @media(max-width:640px){.cards{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Yashvanth Reddy</h1>
+    <p class="sub">Select the version of the portfolio you want to view</p>
+    <div class="cards">
+      <a href="index.html" class="card">
+        <div class="card-badge badge-v1">Version 1</div>
+        <div class="card-title">Clinical Supply Chain</div>
+        <div class="card-desc">Optimized for pharma, biotech, and life sciences recruiters. Full clinical supply chain terminology and domain expertise.</div>
+        <ul class="card-features">
+          <li>IRT, IMP, CRO, CMC, Regulatory terminology</li>
+          <li>Clinical trial supply chain operations</li>
+          <li>Phase II/III study management expertise</li>
+          <li>Cold chain &amp; temperature monitoring focus</li>
+          <li>CS&amp;OP, N-Side, Smart Supplies, Veeva</li>
+        </ul>
+        <span class="card-btn btn-v1">View Clinical Version &rarr;</span>
+      </a>
+      <a href="v2/index.html" class="card">
+        <div class="card-badge badge-v2">Version 2</div>
+        <div class="card-title">Generic Supply Chain</div>
+        <div class="card-desc">Optimized for all industries. Universal supply chain language that resonates across pharma, FMCG, manufacturing, tech, and retail.</div>
+        <ul class="card-features">
+          <li>Universal supply chain terminology</li>
+          <li>S&amp;OP, demand planning, inventory management</li>
+          <li>Global logistics &amp; operations focus</li>
+          <li>Product quality monitoring systems</li>
+          <li>AI automation &amp; digital transformation</li>
+        </ul>
+        <span class="card-btn btn-v2">View Generic Version &rarr;</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
