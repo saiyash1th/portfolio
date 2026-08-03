@@ -639,7 +639,7 @@ section { position: relative; }
   pointer-events: none;
 }
 .speaking-card {
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(0,196,204,0.2);
@@ -765,7 +765,7 @@ section { position: relative; }
   pointer-events: none;
 }
 .contact-sub {
-  max-width: 600px;
+  max-width: 100%;
   color: var(--text-muted);
   font-size: 0.97rem;
   margin-bottom: 48px;
